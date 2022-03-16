@@ -1,7 +1,0 @@
-[node]
-detect-drivers = false
-[[node.driver-configuration]]
-max-sessions = 8
-display-name = "Chrome"
-stereotype = "{\"browserName\": \"chrome\", \"browserVersion\": \"96\", \"platformName\": \"mac\", \"goog:chromeOptions\": {\"binary\": \"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\"}}"
-webdriver-executable = 'test/grid/chromedriver'

@@ -6,15 +6,15 @@
     "test": "test/specs/**/**.spec.js"
   },
   "scripts": {
-    "test": "mocha --config ./**/**/.mocharc.js",
-    "start": "node ./test/config/yargs.tests.config.js",
-    "prestart": "node ./**/**/**/browser_config_cleanup.js",
-    "selenium": "node ./test/config/yargs.hub.config.js",
-    "node": "node ./test/config/yargs.node.config.js",
-    "smoke": "npm test ./**/**/smoke-test/*.spec.js",
-    "regression": "npm test ./**/**/regression-test/*.spec.js",
-    "sanity": "npm test ./**/**/sanity-test/*.spec.js",
-    "remove-logs": "node ./**/**/**/log_cleanup.js",
+    "test": "mocha --config ./test/config/.mocharc.js",
+    "start": "node ./test/config/yargsTestsConfig.js",
+    "prestart": "node ./test/utils/cleanup/browserConfigCleanup.js",
+    "selenium": "node ./test/config/yargsHubConfig.js",
+    "node": "node ./test/config/yargsNodeConfig.js",
+    "smoke": "npm test ./**/**/smoke/*.spec.js",
+    "regression": "npm test ./**/**/regression/*.spec.js",
+    "sanity": "npm test ./**/**/sanity/*.spec.js",
+    "remove-logs": "node ./test/utils/cleanup/logCleanup.js",
     "pretest": "npm run remove-logs"
   },
   "repository": {
@@ -38,8 +38,12 @@
   "devDependencies": {
     "chai": "^4.3.4",
     "fs-extra": "^10.0.0",
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
     "mocha": "^9.1.3",
     "mochawesome": "^7.0.1",
+    "randomstring": "^1.2.2",
     "node-fetch": "^2.6.1",
     "path": "^0.12.7",
     "winston": "^3.3.3"
