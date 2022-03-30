@@ -1,0 +1,7 @@
+[node]
+detect-drivers = false
+[[node.driver-configuration]]
+max-sessions = 4
+display-name = "Chrome"
+stereotype = "{\"browserName\": \"chrome\", \"browserVersion\": \"99\", \"platformName\": \"Windows\"}"
+webdriver-executable = 'test/grid/chromedriver.exe'

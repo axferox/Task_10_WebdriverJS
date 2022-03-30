@@ -1,7 +1,0 @@
-[node]
-detect-drivers = false
-[[node.driver-configuration]]
-max-sessions = 1
-display-name = "Firefox"
-stereotype = "{\"browserName\": \"firefox\", \"browserVersion\": \"95\", \"platformName\": \"MAC\", \"moz:firefoxOptions\": {\"binary\": \"/Applications/Firefox.app/Contents/MacOS/firefox-bin\"}}"
-webdriver-executable = 'geckodriver'
