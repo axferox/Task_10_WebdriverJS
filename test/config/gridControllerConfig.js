@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const { logger } = require('./loggerConfig');
 
 const hubUrl = 'http://localhost:4444/';
 const hubStatusUrl = 'http://localhost:4444/status';
@@ -11,11 +12,11 @@ function startHub() {
     'java -jar test/grid/selenium-server-4.1.1.jar hub',
     (error, stdout, stderr) => {
       if (error) {
-        console.error(`exec error: ${error}`);
+        logger.error(`exec error: ${error}`);
         return;
       }
-      console.log(`stdout: ${stdout}`);
-      console.error(`stderr: ${stderr}`);
+      logger.info(`stdout: ${stdout}`);
+      logger.error(`stderr: ${stderr}`);
     }
   );
 }
@@ -27,7 +28,7 @@ async function getGridStatus() {
     const activeNodes = await response.value.nodes;
     return activeNodes;
   } catch (err) {
-    console.error(`Unable to get response from node ${err}`);
+    logger.error(`Unable to get response from node ${err}`);
   }
 }
 
@@ -38,14 +39,14 @@ async function startNode(browserName, browserVersion, operatingSystem, launchTyp
       `java -jar test/grid/selenium-server-4.1.1.jar node --port ${port} --session-timeout 90 --config test/grid/nodeConfig${browserName}_${browserVersion}_${operatingSystem}${launchType}.toml`,
       (error, stdout, stderr) => {
         if (error) {
-          console.error(`exec error: ${error}`);
+          logger.error(`exec error: ${error}`);
         }
-        console.log(`stdout: ${stdout}`);
-        console.error(`stderr: ${stderr}`);
+        logger.log(`stdout: ${stdout}`);
+        logger.error(`stderr: ${stderr}`);
       }
     );
   } else {
-    console.error('one of the expected input arguments is not defined');
+    logger.error('one of the expected input arguments is not defined');
   }
   return port;
 }
@@ -60,7 +61,7 @@ async function portSelector() {
   } if (newPortChecker == newPort && servedPorts.length < 444) {
     return portSelector();
   }
-  console.error('Cannot launch the node: there is no available ports');
+  logger.error('Cannot launch the node: there is no available ports');
 }
 
 module.exports = {
