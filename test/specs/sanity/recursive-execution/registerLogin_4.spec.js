@@ -10,7 +10,6 @@ const logInPage = PageFactory.getPage('Log in');
 const cookiePopup = PageFactory.getPage('Cookie Popup');
 
 describe('Test performs the testing of the login and sign up forms', () => {
-  before(async () => {});
   after(async () => {
     await quit();
   });
